@@ -1,0 +1,34 @@
+<!--
+  Generated template for the EventsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Events</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h3 text-center>Events that happen in Temple</h3>
+<ion-list>
+  <button ion-item *ngFor="let eventsGroup of events | async"
+  [navPush]="eventsDetailsPage"
+  [navParams]="{
+      firstParamName: eventsGroup.event_image_url,
+      secondParamName: eventsGroup.event_desc,
+      thirdParamName: eventsGroup.event_header
+    }">
+    <ion-avatar item-start>
+      <img src="">
+    </ion-avatar>
+    <h2>{{eventsGroup.event_header}}</h2>
+    <p>{{eventsGroup.event_desc}}</p>
+    <p>{{eventsGroup.event_date}}</p>
+  </button>
+</ion-list>
+</ion-content>

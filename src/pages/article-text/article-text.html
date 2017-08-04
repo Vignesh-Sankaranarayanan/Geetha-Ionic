@@ -1,0 +1,22 @@
+<ion-header>
+<ion-navbar>
+    <ion-title>{{ article_name | uppercase }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="about">
+
+
+
+<ion-list  >
+    
+      <p >{{newsData}}</p>
+  
+  </ion-list>
+ <button ion-item icon-left (click)="getdata()">
+      <ion-icon name="log-out"></ion-icon>
+      Logout
+    </button>
+<p>{{article_name}}</p>
+<!--p>{{message}}</p-->
+</ion-content>

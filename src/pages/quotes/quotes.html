@@ -1,0 +1,33 @@
+<!--
+  Generated template for the LibraryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Quotes Library</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h3 text-center>Spiritual Quotes by gurus</h3>
+<ion-list>
+  <button ion-item *ngFor="let quotesGroup of quotes | async"
+  [navPush]="quotesDetailsPage"
+  [navParams]="quotesGroup">
+    <ion-icon [name]="quotesGroup.icon" item-left></ion-icon>
+    <h2>{{quotesGroup.category}}</h2>
+    <p>"Quotes:-"{{quotesGroup.quotesDetails.length}}</p>
+  </button>
+</ion-list>
+</ion-content>
