@@ -14,7 +14,12 @@
 
 
 <ion-content padding>
-  <ion-slides >
-    
-  </ion-slides>
+ 
+<ion-slides pager="true">
+    <ion-slide *ngFor="let item of homeslides | async"   (click)="navPage(item.home_slide,item.page,item.desc)" >
+       <img src="{{item.home_slide}}" style=" width:300px;height:300px;margin:auto;display:block" />
+    </ion-slide>
+</ion-slides>
+
 </ion-content>
+

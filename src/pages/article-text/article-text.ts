@@ -30,26 +30,31 @@ export class ArticleTextPage {
   loading: any;
   imgsource: string;
   substring: string;
+  tabBarElement: any;
   
 constructor(
     private navParams: NavParams,public zone: NgZone, private httpProvider:HttpProvider,public loadingCtrl: LoadingController,public http: Http) {
 
        this.article =  this.navParams.get("firstParamName");
        this.article_name= this.navParams.get("secondParamName");
-     // this.event_header= this.navParams.get("thirdParamName");
-     
-     this.loading = this.loadingCtrl.create({
-      content: `
-      <ion-spinner ></ion-spinner>`
-    });
-this.display();
-    
+      this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
     }
 
     ionViewDidLoad() {
       console.log("Article Text details");
-   
+      
     }
+
+
+
+
+ionViewWillEnter(){
+this.tabBarElement.style.display='none';
+}
+
+ionViewWillLeave(){
+this.tabBarElement.style.display='flex';
+}
 display() {
  
     this.firestore.ref().child(this.article).getDownloadURL().then((url) => {

@@ -23,27 +23,29 @@ firestore = firebase.storage();
   uid : string;
   event_desc : string;
   event_header : string;
-
+tabBarElement: any;
   constructor(
     private navParams: NavParams,public zone: NgZone) {
        this.eventsGroup =  this.navParams.get("firstParamName");
        this.event_desc= this.navParams.get("secondParamName");
       this.event_header= this.navParams.get("thirdParamName");
+      this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
     }
 
     ionViewDidLoad() {
       console.log("Events details");
-      this.display();
+      
     }
-display() {
- 
-    this.firestore.ref().child(this.eventsGroup).getDownloadURL().then((url) => {
-      this.zone.run(() => {
-        this.imgsource = url;
-       })
-    })
-  }
 
 
+
+
+ionViewWillEnter(){
+this.tabBarElement.style.display='none';
+}
+
+ionViewWillLeave(){
+this.tabBarElement.style.display='flex';
+}
 
 }

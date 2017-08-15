@@ -46,27 +46,21 @@ firestore = firebase.storage();
               ) {
 
                 this.events= angFire.list('data/events');
-               /* this.eventsService.fetchList()
-                  .subscribe(
-                    (list: EventsModel[]) => {
-                      
-                      if (list) {
-                        this.events = list;
-                      } else {
-                        this.events = [];
-                      }
-                    },
-                    error => {
-                     
-                      this.handleError(error.json().error);
-                    }
-                  );
-*/
+               
                
   }
   ngOnInit(){
 //this.quoteCollection= this.quotes;
  }
+
+ display() {
+ 
+    this.firestore.ref().child("https://firebasestorage.googleapis.com/v0/b/geethamandalam-ionic2.appspot.com/o/events%2Fjpeg_bad.jpg?alt=media&token=6df4d13a-b9cf-429f-a6a4-0d48d332fe57").getDownloadURL().then((url) => {
+      this.zone.run(() => {
+        this.imgsource = url;
+       })
+    })
+  }
 private handleError(errorMessage: string) {
     const alert = this.alertCntrl.create({
       title: 'An error occurred!',

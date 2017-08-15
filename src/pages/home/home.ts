@@ -5,8 +5,11 @@ import {QuotesService} from '../../services/quotes';
 import {EventsService} from '../../services/events';
 import {EventsModel} from '../../models/eventsModel';
 import firebase from 'firebase';
-// for Observables
+ import {  ViewChild } from '@angular/core';
+ import {Slides} from 'ionic-angular'
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
+// for Observables
+//import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
 import {
   NavController,
@@ -28,55 +31,46 @@ import {
 })
 export class HomePage {
 
-  homeslides: FirebaseListObservable<any>;
- 
+//  homeslides: FirebaseListObservable<any>;
+homeslides: FirebaseListObservable<any>;
+ slide: any;
+ item: string;
  homeslidesGroup: string;
+ private navCtrlView: NavController;
 firestore = firebase.storage();
+mySlideOptions = {
+    pager:true
+  };
+  @ViewChild(Slides) slides: Slides;
   imgsource: any;
  constructor(private navCtrl: NavController,
               private eventsService: EventsService,
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
               private alertCntrl: AlertController,
-              angFire: AngularFireDatabase,
+             angFire: AngularFireDatabase,
               public zone: NgZone,
               
               ) {
-                
-               this.homeslides= angFire.list('data/home');
-               
-               
-               /* this.eventsService.fetchList()
-                  .subscribe(
-                    (list: EventsModel[]) => {
-                      
-                      if (list) {
-                        this.events = list;
-                      } else {
-                        this.events = [];
-                      }
-                    },
-                    error => {
-                     
-                      this.handleError(error.json().error);
-                    }
-                  );
-*/
-               
-  }
- 
+                 this.homeslides= angFire.list('data/home');
+                 this.navCtrlView=navCtrl;
+              }
 
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
     
   }
-display(path: string) {
- 
-  return  this.firestore.ref().child(path).getDownloadURL().then((url) => {
-      this.zone.run(() => {
-        this.imgsource = url;
-       })
-    })
+
+  navPage(home_slide,page,desc){
+this.navCtrlView.push(page,{
+	firstParamName: home_slide,
+secondParamName: desc,
+thirdParamName:"header"
+});
   }
+  
+    
+    
 
 }
