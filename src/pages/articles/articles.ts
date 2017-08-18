@@ -7,6 +7,7 @@ import {QuotesService} from '../../services/quotes';
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
 import {
+  NavParams,
   NavController,
   PopoverController,
   LoadingController
@@ -18,17 +19,25 @@ import {
   templateUrl: 'articles.html',
 })
 export class ArticlesPage {
-
+flag: String;
  articles: FirebaseListObservable<any>;
+  tabBarElement: any;
  articlesDetailsPage=ArticleDetailsPage;
  constructor(private navCtrl: NavController,
               private quotesService: QuotesService,
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
-              angFire: AngularFireDatabase
+              angFire: AngularFireDatabase,
+              private navParams: NavParams
               ) {
 
                 this.articles= angFire.list('data/spiritualarticles');
+                this.flag = navParams.get('thirdParamName'); 
+                if(this.flag == 'Articles'){
+                  this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
+                }
+
+
                
   }
   ngOnInit(){

@@ -4,6 +4,7 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
 <ion-header>
 
   <ion-navbar>
@@ -12,14 +13,14 @@
 
 </ion-header>
 
-
-<ion-content padding>
- 
+<ion-content  class="my-page">
 <ion-slides pager="true">
-    <ion-slide *ngFor="let item of homeslides | async"   (click)="navPage(item.home_slide,item.page,item.desc)" >
-       <img src="{{item.home_slide}}" style=" width:300px;height:300px;margin:auto;display:block" />
+    <ion-slide *ngFor="let item of homeslides | async"   (click)="navPage(item.home_slide,item.page,item.desc,item.header)" >
+       <img  src="{{item.home_slide}}" class="w3-round" />
     </ion-slide>
 </ion-slides>
-
+<div class="wrapper">
+    <button class="button">Donate Us</button>
+</div>
 </ion-content>
 

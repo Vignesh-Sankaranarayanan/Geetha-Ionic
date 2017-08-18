@@ -4,9 +4,13 @@ import { Component,OnInit,NgZone } from '@angular/core';
 import {QuotesService} from '../../services/quotes';
 import {EventsService} from '../../services/events';
 import {EventsModel} from '../../models/eventsModel';
+import {ArticlesPage} from '../articles/articles';
+import {EventDetailsPage} from '../event-details/event-details';
+import {QuotesPage} from '../quotes/quotes';
+
 import firebase from 'firebase';
  import {  ViewChild } from '@angular/core';
- import {Slides} from 'ionic-angular'
+ import {Slides} from 'ionic-angular';
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 // for Observables
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
@@ -33,7 +37,9 @@ export class HomePage {
 
 //  homeslides: FirebaseListObservable<any>;
 homeslides: FirebaseListObservable<any>;
+eventsDetailsPage=EventDetailsPage;
  slide: any;
+ pages: any;
  item: string;
  homeslidesGroup: string;
  private navCtrlView: NavController;
@@ -48,7 +54,7 @@ mySlideOptions = {
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
               private alertCntrl: AlertController,
-             angFire: AngularFireDatabase,
+              angFire: AngularFireDatabase,
               public zone: NgZone,
               
               ) {
@@ -62,11 +68,21 @@ mySlideOptions = {
     
   }
 
-  navPage(home_slide,page,desc){
-this.navCtrlView.push(page,{
+  navPage(home_slide,page,desc,header){
+    this.pages=page;
+    if("EventDetailsPage"==page){
+      this.pages=EventDetailsPage;
+    }
+    else if ("ArticlesPage"==page){
+ this.pages=ArticlesPage;
+    }
+    else if("QuotesPage"==page){
+ this.pages=QuotesPage;
+    }
+this.navCtrlView.push(this.pages,{
 	firstParamName: home_slide,
 secondParamName: desc,
-thirdParamName:"header"
+thirdParamName:header
 });
   }
   

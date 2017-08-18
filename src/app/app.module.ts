@@ -7,8 +7,14 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
+import { Component, ViewChild, enableProdMode } from '@angular/core';
+import { Http } from '@angular/http';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
+
+
 import { HomePage } from "../pages/home/home";
 import { QuotesPage } from "../pages/quotes/quotes";
+import { IonicPageModule } from 'ionic-angular';
 import { ArticlesPage } from "../pages/articles/articles";
 import { EventsPage } from "../pages/events/events";
 import { StatusBar } from '@ionic-native/status-bar';
@@ -51,9 +57,13 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     ArticleDetailsPage
   ],
   imports: [
+    
     BrowserModule,
     SuperTabsModule.forRoot(),
-    IonicModule.forRoot(MyApp,{tabsPlacement: 'top'}),
+    IonicPageModule.forChild(QuotesPage),
+    IonicPageModule.forChild(EventDetailsPage),
+    IonicPageModule.forChild(ArticlesPage),
+    IonicModule.forRoot(MyApp,{tabsHideOnSubPages: true,tabsPlacement: 'top'}),
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
@@ -81,6 +91,8 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     SettingsService,
     AngularFireDatabase,
     EventsService,
+    Push,
+
   ]
 })
 export class AppModule {}

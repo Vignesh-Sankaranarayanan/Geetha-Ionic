@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController,AlertController , Nav } from 'ionic-angular';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
@@ -14,6 +14,7 @@ import firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AngularFireDatabase } from 'angularfire2/database';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,7 +29,8 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+     public push: Push, public alertCtrl: AlertController
   ) {
     
     firebase.initializeApp({
@@ -49,7 +51,42 @@ export class MyApp {
           {title : 'Events Page',component: EventsPage},
             {title : 'Articles Page',component: ArticlesPage}
     ];
+    this.pushsetup();
   }
+
+  pushsetup() {
+    const options: PushOptions = {
+     android: {
+         senderID: '731588461435'
+     },
+     ios: {
+         alert: 'true',
+         badge: true,
+         sound: 'false'
+     },
+     windows: {}
+  };
+ 
+  const pushObject: PushObject = this.push.init(options);
+ 
+  pushObject.on('notification').subscribe((notification: any) => {
+    if (notification.additionalData.foreground) {
+      let youralert = this.alertCtrl.create({
+        title: 'New Push notification',
+        message: notification.message
+      });
+      youralert.present();
+    }
+  });
+ 
+  pushObject.on('registration').subscribe((registration: any) => {
+     alert("device registered" + registration);
+  });
+ 
+  pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
+  }
+ 
+  
 
   initializeApp() {
     this.platform.ready().then(() => {

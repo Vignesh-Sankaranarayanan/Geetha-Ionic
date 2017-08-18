@@ -1,8 +1,31 @@
-page-home {
+.my-page {
+ 
+    p {
+        color: blueviolet;
+    }
+    ion-slides{
+      height:75%;
+    }
 
-img{
-    width:100%;
-    height:50%;
-    background-color: red;
+  img {
+ width: 70%;
+ height: 50%;   
+ background-color: #999; 
 }
+.wrapper {
+    text-align: center;
 }
+
+.button {
+    position: relative;
+    width:75%;
+    height:100%;
+    bottom:1;
+    background-color: green;
+    color: white;
+    padding: 15px 32px;
+}
+
+ 
+}
+  

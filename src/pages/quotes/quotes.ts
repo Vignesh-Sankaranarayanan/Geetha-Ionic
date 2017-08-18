@@ -8,6 +8,7 @@ import {QuotesService} from '../../services/quotes';
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
 import {
+  NavParams,
   NavController,
   PopoverController,
   LoadingController
@@ -28,17 +29,23 @@ export class QuotesPage implements OnInit {
 
 //quotes: QuotesService;
 quoteCollection: {category: string,quotesDetails: Quote[],icon: string}[];
-
+flag: any;
+tabBarElement: any;
  quotes: FirebaseListObservable<any>;
  quotesDetailsPage=QuoteDetailsPage;
  constructor(private navCtrl: NavController,
               private quotesService: QuotesService,
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
-              angFire: AngularFireDatabase
+              angFire: AngularFireDatabase,
+              private navParams: NavParams
               ) {
 
                 this.quotes= angFire.list('data/Quotes');
+                this.flag = navParams.get('thirdParamName'); 
+                if(this.flag == 'Quotes'){
+                  this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
+                }
                
   }
   ngOnInit(){
