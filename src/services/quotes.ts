@@ -13,11 +13,18 @@ export class QuotesService {
   }
 
   getQuotes() {
+    if(this.getQuotesVal() ==null)
    this.getQuotesList();
     return this.quotes.slice();
   }
 
+setQuotes(quotesNew: Quotes[]){
+  this.quotes=quotesNew;
+}
 
+getQuotesVal(){
+  return this.quotes;
+}
  getQuotesList(){
    
     
@@ -27,9 +34,10 @@ export class QuotesService {
       })
       .do((quotes: Quotes[]) => {
         if (quotes) {
+          this.setQuotes(quotes);
           return this.quotes = quotes
         } else {
-          return this.quotes = [];
+          return this.quotes;
         }
       });
   

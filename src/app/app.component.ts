@@ -73,15 +73,16 @@ export class MyApp {
     if (notification.additionalData.foreground) {
       let youralert = this.alertCtrl.create({
         title: 'New Push notification',
-        message: notification.message
+        message: notification.message,
+        buttons: ['ok']
       });
       youralert.present();
     }
   });
  
-  pushObject.on('registration').subscribe((registration: any) => {
-     alert("device registered" + registration);
-  });
+  //pushObject.on('registration').subscribe((registration: any) => {
+ //    alert("device registered" + registration);
+ // });
  
   pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
   }

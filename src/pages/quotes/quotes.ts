@@ -3,7 +3,7 @@ import { Component,OnInit } from '@angular/core';
 import {Quote} from "../../data/quote.interface";
 import {QuoteDetailsPage} from '../quote-details/quote-details';
 import {QuotesService} from '../../services/quotes';
-
+import { Quotes } from "../../models/quotes";
 // for Observables
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
@@ -27,7 +27,7 @@ import {
 })
 export class QuotesPage implements OnInit {
 
-//quotes: QuotesService;
+quotesNew: Quotes[];
 quoteCollection: {category: string,quotesDetails: Quote[],icon: string}[];
 flag: any;
 tabBarElement: any;
@@ -47,17 +47,18 @@ tabBarElement: any;
                   this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
                 }
                
+               
   }
   ngOnInit(){
 //this.quoteCollection= this.quotes;
  }
 
 ionViewWillEnter() {
-   // this.quotes = this.quotesService.getQuotes();
+   //this.quotesNew = this.quotesService.getQuotes();
   }
  ionViewDidLoad() {
     console.log('ionViewDidLoad QuotesPage');
-    //this.quotes = this.quotesService.getQuotes();
+   // this.quotesNew = this.quotesService.getQuotes();
   }
 
 

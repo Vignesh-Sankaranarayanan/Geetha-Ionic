@@ -21,6 +21,7 @@ export class QuoteDetailsPage  {
 
 ionViewWillEnter(){
 this.tabBarElement.style.display='none';
+
 }
 
 ionViewWillLeave(){
