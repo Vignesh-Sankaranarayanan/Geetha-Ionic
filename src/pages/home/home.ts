@@ -7,11 +7,13 @@ import {EventsModel} from '../../models/eventsModel';
 import {ArticlesPage} from '../articles/articles';
 import {EventDetailsPage} from '../event-details/event-details';
 import {QuotesPage} from '../quotes/quotes';
-
+import { 
+  AfoListObservable, 
+  AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 import firebase from 'firebase';
  import {  ViewChild } from '@angular/core';
  import {Slides} from 'ionic-angular';
-import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
+//import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 // for Observables
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
@@ -36,7 +38,7 @@ import {
 export class HomePage {
 
 //  homeslides: FirebaseListObservable<any>;
-homeslides: FirebaseListObservable<any>;
+homeslides: AfoListObservable<any[]>;
 eventsDetailsPage=EventDetailsPage;
  slide: any;
  pages: any;
@@ -54,7 +56,7 @@ mySlideOptions = {
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
               private alertCntrl: AlertController,
-              angFire: AngularFireDatabase,
+              angFire: AngularFireOfflineDatabase,
               public zone: NgZone,
               
               ) {

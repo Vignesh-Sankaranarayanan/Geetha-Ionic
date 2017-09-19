@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AngularFireOfflineModule } from 'angularfire2-offline';
 import {AngularFireDatabase } from 'angularfire2/database';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 @Component({

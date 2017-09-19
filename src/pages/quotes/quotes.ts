@@ -5,7 +5,9 @@ import {QuoteDetailsPage} from '../quote-details/quote-details';
 import {QuotesService} from '../../services/quotes';
 import { Quotes } from "../../models/quotes";
 // for Observables
-import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
+import { 
+  AfoListObservable, 
+  AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 import {
   NavParams,
@@ -31,13 +33,13 @@ quotesNew: Quotes[];
 quoteCollection: {category: string,quotesDetails: Quote[],icon: string}[];
 flag: any;
 tabBarElement: any;
- quotes: FirebaseListObservable<any>;
+ quotes: AfoListObservable<any[]>;
  quotesDetailsPage=QuoteDetailsPage;
  constructor(private navCtrl: NavController,
               private quotesService: QuotesService,
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
-              angFire: AngularFireDatabase,
+              angFire: AngularFireOfflineDatabase,
               private navParams: NavParams
               ) {
 

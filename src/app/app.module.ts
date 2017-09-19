@@ -29,8 +29,15 @@ import { QuotesService } from "../services/quotes";
 import {EventsService} from "../services/events";
 import { SettingsService } from "../services/settings";
 import { HttpModule } from '@angular/http';
+
+import { AngularFireOfflineModule } from 'angularfire2-offline';
+import { 
+  AfoListObservable, 
+  AngularFireOfflineDatabase } from 'angularfire2-offline/database';
+
 import { AngularFireModule } from 'angularfire2';
 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 export const firebaseConfig={
 apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     authDomain: "geethamandalam-ionic2.firebaseapp.com",
@@ -65,7 +72,9 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     IonicPageModule.forChild(ArticlesPage),
     IonicModule.forRoot(MyApp,{tabsHideOnSubPages: true,tabsPlacement: 'top'}),
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireOfflineModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -89,10 +98,12 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QuotesService,
     SettingsService,
+    AngularFireOfflineDatabase,
+    AngularFireOfflineModule,
     AngularFireDatabase,
     EventsService,
+    AngularFireModule,
     Push,
-
   ]
 })
 export class AppModule {}
