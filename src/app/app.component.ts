@@ -15,7 +15,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import {AngularFireDatabase } from 'angularfire2/database';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
+import {PushObject, PushOptions } from '@ionic-native/push';
+import { Push} from 'ionic-native';
 @Component({
   templateUrl: 'app.html'
 })
@@ -52,41 +53,66 @@ export class MyApp {
           {title : 'Events Page',component: EventsPage},
             {title : 'Articles Page',component: ArticlesPage}
     ];
-    this.pushsetup();
+    this.initPushNotification();
   }
 
-  pushsetup() {
-    const options: PushOptions = {
-     android: {
-         senderID: '731588461435'
-     },
-     ios: {
-         alert: 'true',
-         badge: true,
-         sound: 'false'
-     },
-     windows: {}
-  };
- 
-  const pushObject: PushObject = this.push.init(options);
- 
-  pushObject.on('notification').subscribe((notification: any) => {
-    if (notification.additionalData.foreground) {
-      let youralert = this.alertCtrl.create({
-        title: 'New Push notification',
-        message: notification.message,
-        buttons: ['ok']
-      });
-      youralert.present();
+
+
+initPushNotification(){
+    if (!this.platform.is('cordova')) {
+      console.warn("Push notifications not initialized. Cordova is not available - Run in physical device");
+      return;
     }
-  });
- 
-  //pushObject.on('registration').subscribe((registration: any) => {
- //    alert("device registered" + registration);
- // });
- 
-  pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
-  }
+    let push = Push.init({
+      android: {
+        senderID: "210517257729"
+      },
+      ios: {
+        alert: "true",
+        badge: false,
+        sound: "true"
+      },
+      windows: {}
+    });
+
+    push.on('registration', (data) => {
+      console.log("device token ->", data.registrationId);
+      //TODO - send device token to server
+    });
+    push.on('notification', (data) => {
+      console.log('message', data.message);
+      let self = this;
+      //if user using app and push notification comes
+      if (data.additionalData.foreground) {
+        // if application open, show popup
+        let confirmAlert = this.alertCtrl.create({
+          title: 'New Notification',
+          message: data.message,
+          buttons: [{
+            text: 'Ignore',
+            role: 'cancel'
+          }, {
+            text: 'View',
+            handler: () => {
+              //TODO: Your logic here
+              self.nav.push(ArticlesPage, {message: data.message});
+            }
+          }]
+        });
+        confirmAlert.present();
+      } else {
+        //if user NOT using app and push notification comes
+        //TODO: Your logic on click of push notification directly
+        self.nav.push(ArticlesPage, {message: data.message});
+        console.log("Push notification clicked");
+      }
+    });
+    push.on('error', (e) => {
+      console.log(e.message);
+    });
+}
+
+
  
   
 

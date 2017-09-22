@@ -23,7 +23,7 @@ export class ArticleTextPage {
  public message: any;
  
  firestore = firebase.storage();
- article: string;
+ article: any;
  article_name: string;
  textsource: string;
  newsData: any;
@@ -35,7 +35,9 @@ export class ArticleTextPage {
 constructor(
     private navParams: NavParams,public zone: NgZone, private httpProvider:HttpProvider,public loadingCtrl: LoadingController,public http: Http) {
 
-       this.article =  this.navParams.get("firstParamName");
+       
+      this.article = "`"+this.navParams.get("firstParamName").join('\n')+"`";
+      
        this.article_name= this.navParams.get("secondParamName");
       this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
     }

@@ -9,8 +9,8 @@ import { ListPage } from '../pages/list/list';
 import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 import { Component, ViewChild, enableProdMode } from '@angular/core';
 import { Http } from '@angular/http';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
-
+import {  PushObject, PushOptions } from '@ionic-native/push';
+import { Push} from 'ionic-native';
 
 import { HomePage } from "../pages/home/home";
 import { QuotesPage } from "../pages/quotes/quotes";
