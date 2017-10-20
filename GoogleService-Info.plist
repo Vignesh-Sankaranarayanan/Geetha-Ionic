@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>731588461435-k4vk1cqks5cm3jqkvfcllbo6corjmp6h.apps.googleusercontent.com</string>
+	<string>731588461435-j4j1c7ej7aqffca9l2icbbb692a8sbfc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.731588461435-k4vk1cqks5cm3jqkvfcllbo6corjmp6h</string>
+	<string>com.googleusercontent.apps.731588461435-j4j1c7ej7aqffca9l2icbbb692a8sbfc</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBrUpXkdMDkJfMBmZsD_bgWrnBh8iuy2eE</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +17,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>io.ionic.starter</string>
+	<string>io.ionic.startergeetha</string>
 	<key>PROJECT_ID</key>
 	<string>geethamandalam-ionic2</string>
 	<key>STORAGE_BUCKET</key>
 	<string>geethamandalam-ionic2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:731588461435:ios:764d2cb7da3280eb</string>
+	<string>1:731588461435:ios:c969c6385cc84e0f</string>
 	<key>DATABASE_URL</key>
 	<string>https://geethamandalam-ionic2.firebaseio.com</string>
 </dict>

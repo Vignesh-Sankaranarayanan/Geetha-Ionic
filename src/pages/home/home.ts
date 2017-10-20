@@ -12,7 +12,7 @@ import {
   AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 import firebase from 'firebase';
  import {  ViewChild } from '@angular/core';
- import {Slides} from 'ionic-angular';
+ import {Slides,Platform} from 'ionic-angular';
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 // for Observables
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
@@ -23,7 +23,7 @@ import {
   LoadingController,
   AlertController
 } from "ionic-angular";
-
+declare var window: any;
 /**
  * Generated class for the HomePage page.
  *
@@ -38,6 +38,7 @@ import {
 export class HomePage {
 
 //  homeslides: FirebaseListObservable<any>;
+name : string;
 homeslides: AfoListObservable<any[]>;
 eventsDetailsPage=EventDetailsPage;
  slide: any;
@@ -58,6 +59,7 @@ mySlideOptions = {
               private alertCntrl: AlertController,
               angFire: AngularFireOfflineDatabase,
               public zone: NgZone,
+              public platform: Platform,
               
               ) {
                  this.homeslides= angFire.list('data/home');
@@ -67,7 +69,14 @@ mySlideOptions = {
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    
+    this.platform.ready().then(_ =>{
+      window.FCMPlugin && window.FCMPlugin.onNotification(data =>{
+        this.zone.run(()=> {
+          this.name = data.name;
+        })
+      });
+    });
+  
   }
 
   navPage(home_slide,page,desc,header){

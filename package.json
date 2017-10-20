@@ -34,19 +34,23 @@
         "cordova-android": "^6.2.3",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-cocoapod-support": "^1.3.0",
-        "cordova-plugin-console": "^1.0.5",
-        "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-console": "^1.1.0",
+        "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-fcm": "^2.1.2",
+        "cordova-plugin-firebase-dynamiclinks": "^0.11.0",
         "cordova-plugin-splashscreen": "^4.0.3",
-        "cordova-plugin-statusbar": "^2.2.2",
-        "cordova-plugin-whitelist": "^1.3.1",
+        "cordova-plugin-statusbar": "^2.2.3",
+        "cordova-plugin-whitelist": "^1.3.2",
         "firebase": "^4.3.1",
         "ionic-angular": "^3.5.3-201707261447",
         "ionic-native": "^2.9.0",
         "ionic-plugin-keyboard": "^2.2.1",
+        "ionic-service-push": "^0.1.13",
         "ionic2-super-tabs": "^4.0.0",
         "ionicons": "3.0.0",
+        "onesignal-cordova-plugin": "^2.2.2",
         "phonegap-plugin-push": "^2.0.0",
+        "promise-polyfill": "6.0.2",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
         "zone.js": "0.8.12"
@@ -55,7 +59,7 @@
         "@ionic/app-scripts": "2.0.2",
         "@ionic/cli-plugin-cordova": "1.6.2",
         "@ionic/cli-plugin-ionic-angular": "1.4.1",
-        "ionic": "3.7.0",
+        "ionic": "3.13.2",
         "typescript": "2.3.4"
     },
     "description": "An Ionic project",
@@ -67,13 +71,13 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "phonegap-plugin-push": {
-                "SENDER_ID": "731588461435"
-            },
-            "cordova-plugin-cocoapod-support": {}
+            "cordova-plugin-cocoapod-support": {},
+            "phonegap-plugin-push": {},
+            "onesignal-cordova-plugin": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }
