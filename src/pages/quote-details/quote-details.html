@@ -15,6 +15,30 @@
       <p>{{ quote.text }}</p>
       <p class="author">{{ quote.person }}</p>
     </ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-only (click)="regularShare(quote)" color="primary" clear>
+        <ion-icon class="share-icon" name="share"></ion-icon>
+      </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only (click)="whatsappShare(quote)" color="primary" clear>
+        <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
+      </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only (click)="facebookShare(quote)" color="primary" clear>
+        <ion-icon  class="share-icon" name="logo-facebook"></ion-icon>
+      </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only (click)="twitterShare(quote)" color="primary" clear>
+        <ion-icon class="share-icon" name="logo-twitter"></ion-icon>
+      </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-content>
 

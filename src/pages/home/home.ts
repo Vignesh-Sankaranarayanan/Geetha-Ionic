@@ -7,6 +7,8 @@ import {EventsModel} from '../../models/eventsModel';
 import {ArticlesPage} from '../articles/articles';
 import {EventDetailsPage} from '../event-details/event-details';
 import {QuotesPage} from '../quotes/quotes';
+import { InAppBrowser } from 'ionic-native';
+
 import { 
   AfoListObservable, 
   AngularFireOfflineDatabase } from 'angularfire2-offline/database';
@@ -36,7 +38,7 @@ declare var window: any;
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+isValid="true";
 //  homeslides: FirebaseListObservable<any>;
 name : string;
 homeslides: AfoListObservable<any[]>;
@@ -96,8 +98,18 @@ secondParamName: desc,
 thirdParamName:header
 });
   }
+  Donate(){
+    this.platform.ready().then(() => {
+      let browser = new InAppBrowser("http://geethamandalam.org/donation--more-information.html",'_blank');
+  });
+  }
+
   
     
-    
-
+  slideChanged() {
+    let currentIndex = this.slides.getActiveIndex();
+    if(currentIndex==3){
+      //this.slides.stopAutoplay();
+    }
+  }
 }

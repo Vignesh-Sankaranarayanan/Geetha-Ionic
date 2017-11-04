@@ -6,7 +6,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import firebase from 'firebase';
 import {HttpProvider} from '../../providers/http-provider';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 /**
  * Generated class for the ArticleTextPage page.
  *
@@ -33,11 +33,10 @@ export class ArticleTextPage {
   tabBarElement: any;
   
 constructor(
-    private navParams: NavParams,public zone: NgZone, private httpProvider:HttpProvider,public loadingCtrl: LoadingController,public http: Http) {
+    private navParams: NavParams,private socialSharing: SocialSharing,public zone: NgZone, private httpProvider:HttpProvider,public loadingCtrl: LoadingController,public http: Http) {
 
        
-      this.article = "`"+this.navParams.get("firstParamName").join('\n')+"`";
-      
+      this.article = this.navParams.get("firstParamName").join('<br><br>');
        this.article_name= this.navParams.get("secondParamName");
       this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
     }
@@ -48,7 +47,24 @@ constructor(
     }
 
 
-
+    regularShare(index){
+      var msg = index;
+      this.socialSharing.share(msg, null, null, null);
+    }
+    whatsappShare(index){
+      var msg  = index;
+       this.socialSharing.shareViaWhatsApp(msg, null, null);
+     }
+    
+     twitterShare(index){
+      var msg  = index;
+      this.socialSharing.shareViaTwitter(msg, null, null);
+    }
+    
+    facebookShare(index){
+      var msg  = index;
+       this.socialSharing.shareViaFacebook(msg, null, null);
+     }
 
 ionViewWillEnter(){
 this.tabBarElement.style.display='none';
@@ -57,6 +73,8 @@ this.tabBarElement.style.display='none';
 ionViewWillLeave(){
 this.tabBarElement.style.display='flex';
 }
+
+
 display() {
  
     this.firestore.ref().child(this.article).getDownloadURL().then((url) => {
@@ -66,10 +84,11 @@ display() {
         console.log( this.imgsource);
        })
     });
-   
+  
 
    
   }
+   
     getdata() {
    //   this.display();
      //  this.loading.present();

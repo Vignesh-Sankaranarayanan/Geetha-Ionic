@@ -29,7 +29,8 @@ import { QuotesService } from "../services/quotes";
 import {EventsService} from "../services/events";
 import { SettingsService } from "../services/settings";
 import { HttpModule } from '@angular/http';
-
+import { NavController} from 'ionic-angular';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { 
   AfoListObservable, 
@@ -64,7 +65,7 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     ArticleDetailsPage
   ],
   imports: [
-    
+       
     BrowserModule,
     SuperTabsModule.forRoot(),
     IonicPageModule.forChild(QuotesPage),
@@ -93,10 +94,11 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     ArticleDetailsPage
   ],
   providers: [
+   
+    QuotesService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    QuotesService,
     SettingsService,
     AngularFireOfflineDatabase,
     AngularFireOfflineModule,
@@ -104,6 +106,7 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     EventsService,
     AngularFireModule,
     Push,
+    SocialSharing,
   ]
 })
 export class AppModule {}

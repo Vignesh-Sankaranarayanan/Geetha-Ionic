@@ -6,7 +6,7 @@
 -->
 
 <ion-header>
-
+<ion-title>GeethaMandalam</ion-title>
   <ion-navbar>
     <ion-title>{{name}}</ion-title>
   </ion-navbar>
@@ -14,15 +14,17 @@
 </ion-header>
 
 <ion-content  class="my-page">
-    
-    <ion-slides pager="true">
-    <ion-slide *ngFor="let item of homeslides | async"   (click)="navPage(item.home_slide,item.page,item.desc,item.header)" >
+  
+    <ion-slides pager="true" >
+  
+    <ion-slide  *ngFor="let item of homeslides | async"   (click)="navPage(item.home_slide,item.page,item.desc,item.header)" >
        <img  src="{{item.home_slide}}" class="w3-round" />
-    </ion-slide>
+       
+    </ion-slide> 
 </ion-slides>
 
 <div class="wrapper">
-    <button class="button">Donate</button>
+    <button class="button" (click)="Donate()">Donate </button>
 </div>
 </ion-content>
 

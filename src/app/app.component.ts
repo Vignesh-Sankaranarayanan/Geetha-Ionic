@@ -6,9 +6,11 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 
 import { HomePage } from "../pages/home/home";
+import {EventDetailsPage} from "../pages/event-details/event-details";
 import { QuotesPage } from "../pages/quotes/quotes";
 import { ArticlesPage } from "../pages/articles/articles";
 import { EventsPage } from "../pages/events/events";
+import {QuoteDetailsPage} from "../pages/quote-details/quote-details"
 import { TabsPage } from '../pages/tabs/tabs';
 import firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,6 +19,7 @@ import { AngularFireOfflineModule } from 'angularfire2-offline';
 import {AngularFireDatabase } from 'angularfire2/database';
 import {PushObject, PushOptions } from '@ionic-native/push';
 import { Push} from 'ionic-native';
+import { Deeplinks} from 'ionic-native';
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,6 +31,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(
+    
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
@@ -40,11 +44,17 @@ export class MyApp {
   
       // OneSignal Code start:
       // Enable to debug issues:
-      // window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+       window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
   
       var notificationOpenedCallback = function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+       
+       
+
+        
       };
+
+      
   
       window["plugins"].OneSignal
         .startInit("0d68aa70-1bd4-4aef-b2d3-fbec5b6ed9eb", "731588461435")
@@ -65,14 +75,35 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage },
-      {title : 'Home Page',component: HomePage},
-        {title : 'Quotes Page',component: QuotesPage},
-          {title : 'Events Page',component: EventsPage},
-            {title : 'Articles Page',component: ArticlesPage}
+      { title: 'About Us', component: HelloIonicPage }
     ];
-    
+  }
+    ngAfterViewInit() {
+      this.platform.ready().then(() => {
+        /*
+        IonicDeeplink.route({
+          '/about-us': AboutPage,
+          '/universal-links-test': AboutPage,
+          '/products/:productId': ProductPage
+        }, function(match) {
+          // Handle the route manually
+        }, function(nomatch) {
+          // No match
+        })
+        */
+  
+        // Convenience to route with a given nav
+        Deeplinks.routeWithNavController(this.nav, {
+          '/quotes': QuotesPage,
+          '/articlespage': ArticlesPage,
+          '/eventdetails': EventDetailsPage
+        }).subscribe((match) => {
+          console.log('Successfully routed', match);
+        }, (nomatch) => {
+          console.warn('Unmatched Route', nomatch);
+        });
+      })
+    }
   }
 
 
@@ -82,4 +113,4 @@ export class MyApp {
 
  
   
-}
+
