@@ -6,22 +6,24 @@
 -->
 
 <ion-header>
-<ion-title>GeethaMandalam</ion-title>
+<ion-title aligh-title="center">Geetha Mandalam</ion-title>
   <ion-navbar>
-    <ion-title>{{name}}</ion-title>
+    <ion-title aligh-title="center">{{name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content  class="my-page">
   
-    <ion-slides pager="true" >
   
-    <ion-slide  *ngFor="let item of homeslides | async"   (click)="navPage(item.home_slide,item.page,item.desc,item.header)" >
+    <ion-slides  *ngFor="let itemval of flag | async"  autoplay="3000" loop="true" speed="500"  pager="true" (ionSlideDidChange)="slideChanged()">
+    <ion-slide   *ngFor="let item of homeslides | async"  (click)="navPage(item.home_slide,item.page,item.desc,item.header)" >
+  
        <img  src="{{item.home_slide}}" class="w3-round" />
-       
+      
     </ion-slide> 
 </ion-slides>
+
 
 <div class="wrapper">
     <button class="button" (click)="Donate()">Donate </button>

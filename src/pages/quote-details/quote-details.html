@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ quoteGroup.category | uppercase }}</ion-title>
+    <ion-title aligh-title="center">{{ quoteGroup.category | uppercase }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,21 +20,6 @@
         <ion-col>
           <button ion-button icon-only (click)="regularShare(quote)" color="primary" clear>
         <ion-icon class="share-icon" name="share"></ion-icon>
-      </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-only (click)="whatsappShare(quote)" color="primary" clear>
-        <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
-      </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-only (click)="facebookShare(quote)" color="primary" clear>
-        <ion-icon  class="share-icon" name="logo-facebook"></ion-icon>
-      </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-only (click)="twitterShare(quote)" color="primary" clear>
-        <ion-icon class="share-icon" name="logo-twitter"></ion-icon>
       </button>
         </ion-col>
       </ion-row>

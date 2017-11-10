@@ -96,7 +96,7 @@ export class MyApp {
         Deeplinks.routeWithNavController(this.nav, {
           '/quotes': QuotesPage,
           '/articlespage': ArticlesPage,
-          '/eventdetails': EventDetailsPage
+          '/eventdetails': EventsPage
         }).subscribe((match) => {
           console.log('Successfully routed', match);
         }, (nomatch) => {

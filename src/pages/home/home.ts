@@ -42,11 +42,13 @@ isValid="true";
 //  homeslides: FirebaseListObservable<any>;
 name : string;
 homeslides: AfoListObservable<any[]>;
+flag: AfoListObservable<any[]>;
 eventsDetailsPage=EventDetailsPage;
  slide: any;
  pages: any;
  item: string;
  homeslidesGroup: string;
+
  private navCtrlView: NavController;
 firestore = firebase.storage();
 mySlideOptions = {
@@ -65,13 +67,16 @@ mySlideOptions = {
               
               ) {
                  this.homeslides= angFire.list('data/home');
+                 this.flag=angFire.list('data/HomePageTestData');
                  this.navCtrlView=navCtrl;
               }
 
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.slides.startAutoplay();
     this.platform.ready().then(_ =>{
+      
       window.FCMPlugin && window.FCMPlugin.onNotification(data =>{
         this.zone.run(()=> {
           this.name = data.name;
@@ -108,8 +113,6 @@ thirdParamName:header
     
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
-    if(currentIndex==3){
-      //this.slides.stopAutoplay();
-    }
+      this.slides.startAutoplay();
   }
 }

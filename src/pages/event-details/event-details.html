@@ -6,7 +6,7 @@
 -->
 <ion-header>
 <ion-navbar>
-    <ion-title>{{ event_header | uppercase }}</ion-title>
+    <ion-title aligh-title="center">{{ event_header | uppercase }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -22,21 +22,6 @@
           <ion-col>
             <button ion-button icon-only (click)="regularShare(eventsGroup)" color="primary" clear>
           <ion-icon class="share-icon" name="share"></ion-icon>
-        </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-only (click)="whatsappShare(eventsGroup)" color="primary" clear>
-          <ion-icon class="share-icon" name="logo-whatsapp"></ion-icon>
-        </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-only (click)="facebookShare(eventsGroup)" color="primary" clear>
-          <ion-icon  class="share-icon" name="logo-facebook"></ion-icon>
-        </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-only (click)="twitterShare(eventsGroup)" color="primary" clear>
-          <ion-icon class="share-icon" name="logo-twitter"></ion-icon>
         </button>
           </ion-col>
         </ion-row>

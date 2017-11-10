@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Events</ion-title>
+    <ion-title aligh-title="center">Events</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<h3 text-center>Events that happen in Temple</h3>
+<h3 text-center>Upcoming events in Temple</h3>
 <ion-list>
   <button ion-item *ngFor="let eventsGroup of events | async"
   [navPush]="eventsDetailsPage"
