@@ -36,7 +36,7 @@
         "angularfire2-offline": "^4.3.1",
         "com-badrit-base64": "^0.2.0",
         "cordova-android": "^6.2.3",
-        "cordova-ios": "^4.1.0",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-cocoapod-support": "^1.3.0",
         "cordova-plugin-console": "^1.1.0",
         "cordova-plugin-device": "^1.1.6",

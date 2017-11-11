@@ -86,3 +86,22 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+$toolbar-ios-background: #E90F33;
+$toolbar-md-background: #E90F33;
+$toolbar-wp-background: #E90F33;
+$toolbar-ios-border-color:  #E90F33;
+$toolbar-md-title-text-color: white;
+$toolbar-ios-title-text-color: white;
+$toolbar-wp-title-text-color: white;
+$toolbar-md-border-color:  #E90F33;
+// Use the default background for the tabbar since it inherits from toolbar
+
+$tabs-ios-background:                  $toolbar-ios-background !default;
+$tabs-ios-border-color:                #E90F33;
+$tabs-ios-tab-color-inactive:          white;
+$tabs-ios-tab-color-active:            white;
+
+$tabs-md-background:                  $toolbar-md-background !default;
+$tabs-md-border-color:                #E90F33;
+$tabs-md-tab-color-inactive:          white;
+$tabs-md-tab-color-active:            white;
