@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Platform, MenuController,AlertController , Nav } from 'ionic-angular';
+import { Platform,MenuController,AlertController , Nav } from 'ionic-angular';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { HomePage } from "../pages/home/home";
 import {EventDetailsPage} from "../pages/event-details/event-details";
 import { QuotesPage } from "../pages/quotes/quotes";
+import { AboutPage } from "../pages/about/about";
+import { ContactUsPage } from "../pages/contactus/contactus";
 import { ArticlesPage } from "../pages/articles/articles";
 import { EventsPage } from "../pages/events/events";
 import {QuoteDetailsPage} from "../pages/quote-details/quote-details"
@@ -29,22 +31,25 @@ export class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage = TabsPage;
   pages: Array<{title: string, component: any}>;
-
+  page: any;
+  
   constructor(
     
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
+    public menuCtrl: MenuController,
      public push: Push, public alertCtrl: AlertController
   ) {
+    
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreen.hide();
   
       // OneSignal Code start:
       // Enable to debug issues:
-       window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+       //window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
   
       var notificationOpenedCallback = function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
@@ -57,27 +62,37 @@ export class MyApp {
       
   
       window["plugins"].OneSignal
-        .startInit("0d68aa70-1bd4-4aef-b2d3-fbec5b6ed9eb", "731588461435")
+        .startInit("400b87a2-01ac-4e95-910c-3169a8ee4c65", "321809133893")
         .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
     });
     
     firebase.initializeApp({
-      apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
-    authDomain: "geethamandalam-ionic2.firebaseapp.com",
-    databaseURL: "https://geethamandalam-ionic2.firebaseio.com",
-    projectId: "geethamandalam-ionic2",
-    storageBucket: "geethamandalam-ionic2.appspot.com",
-    messagingSenderId: "731588461435"
+      apiKey: "AIzaSyAlQ05uPHksMr7v5poqBUeKuzXl5CD-Tew",
+    authDomain: "geethamandalam-ionic2-68284.firebaseapp.com",
+    databaseURL: "https://geethamandalam-ionic2-68284.firebaseio.com",
+    projectId: "geethamandalam-ionic2-68284",
+    storageBucket: "geethamandalam-ionic2-68284.appspot.com",
+    messagingSenderId: "321809133893"
     }
     );
 
     
     // set our app's pages
     this.pages = [
-      { title: 'About Us', component: HelloIonicPage }
+      { title: 'Home', component: this.rootPage},
+      { title: 'About Us', component: AboutPage },
+      { title: 'Contact Us', component: ContactUsPage }
+      
     ];
   }
+
+  openPage(p){
+    
+   
+      this.nav.setRoot(p.component);
+      this.menuCtrl.close();
+        }
     ngAfterViewInit() {
       this.platform.ready().then(() => {
         /*

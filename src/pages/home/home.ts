@@ -8,6 +8,7 @@ import {ArticlesPage} from '../articles/articles';
 import {EventDetailsPage} from '../event-details/event-details';
 import {QuotesPage} from '../quotes/quotes';
 import { InAppBrowser } from 'ionic-native';
+import {AboutPage} from '../about/about';
 
 import { 
   AfoListObservable, 
@@ -25,6 +26,7 @@ import {
   LoadingController,
   AlertController
 } from "ionic-angular";
+import { TabsPage } from '../tabs/tabs';
 declare var window: any;
 /**
  * Generated class for the HomePage page.
@@ -38,6 +40,7 @@ declare var window: any;
   templateUrl: 'home.html',
 })
 export class HomePage {
+  aboutPage = AboutPage;
 isValid="true";
 //  homeslides: FirebaseListObservable<any>;
 name : string;
@@ -48,7 +51,7 @@ eventsDetailsPage=EventDetailsPage;
  pages: any;
  item: string;
  homeslidesGroup: string;
-
+ rootPage = TabsPage;
  private navCtrlView: NavController;
 firestore = firebase.storage();
 mySlideOptions = {
@@ -74,7 +77,7 @@ mySlideOptions = {
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-    this.slides.startAutoplay();
+    /*this.slides.startAutoplay();
     this.platform.ready().then(_ =>{
       
       window.FCMPlugin && window.FCMPlugin.onNotification(data =>{
@@ -83,6 +86,7 @@ mySlideOptions = {
         })
       });
     });
+    */
   
   }
 

@@ -21,6 +21,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import {AboutPage} from '../pages/about/about';
+import {ContactUsPage} from '../pages/contactus/contactus';
 import {QuoteDetailsPage} from '../pages/quote-details/quote-details';
 import {EventDetailsPage} from '../pages/event-details/event-details';
 import {ArticleTextPage} from '../pages/article-text/article-text';
@@ -40,12 +42,13 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 export const firebaseConfig={
-apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
-    authDomain: "geethamandalam-ionic2.firebaseapp.com",
-    databaseURL: "https://geethamandalam-ionic2.firebaseio.com",
-    projectId: "geethamandalam-ionic2",
-    storageBucket: "geethamandalam-ionic2.appspot.com",
-    messagingSenderId: "731588461435"
+
+  apiKey: "AIzaSyAlQ05uPHksMr7v5poqBUeKuzXl5CD-Tew",
+  authDomain: "geethamandalam-ionic2-68284.firebaseapp.com",
+  databaseURL: "https://geethamandalam-ionic2-68284.firebaseio.com",
+  projectId: "geethamandalam-ionic2-68284",
+  storageBucket: "geethamandalam-ionic2-68284.appspot.com",
+  messagingSenderId: "321809133893"
 };
 
 @NgModule({
@@ -56,6 +59,8 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     ListPage,
     HomePage,
     TabsPage,
+    AboutPage,
+    ContactUsPage,
     QuotesPage,
     ArticlesPage,
     EventsPage,
@@ -85,13 +90,15 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     ListPage,
     HomePage,
     TabsPage,
+    ContactUsPage,
     QuotesPage,
     QuoteDetailsPage,
     ArticlesPage,
     EventsPage,
     EventDetailsPage,
     ArticleTextPage,
-    ArticleDetailsPage
+    ArticleDetailsPage,
+    AboutPage
   ],
   providers: [
    
@@ -107,6 +114,7 @@ apiKey: "AIzaSyCk0d69i6RsYaxYLnjrmCOvmItS1XlEj-0",
     AngularFireModule,
     Push,
     SocialSharing,
+    
   ]
 })
 export class AppModule {}
