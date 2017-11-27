@@ -6,7 +6,10 @@ import {EventsService} from '../../services/events';
 import {EventsModel} from '../../models/eventsModel';
 import firebase from 'firebase';
 // for Observables
-import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
+
+import { 
+  AfoListObservable, 
+  AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 import {
   NavController,
@@ -31,7 +34,7 @@ export class EventsPage {
   //events: EventsModel[];
 
 
- events: FirebaseListObservable<any>;
+ events: AfoListObservable<any[]>;
  eventsDetailsPage=EventDetailsPage;
  eventsGroup: string;
 firestore = firebase.storage();
@@ -41,7 +44,7 @@ firestore = firebase.storage();
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
               private alertCntrl: AlertController,
-              angFire: AngularFireDatabase,
+              angFire: AngularFireOfflineDatabase,
               public zone: NgZone
               ) {
 

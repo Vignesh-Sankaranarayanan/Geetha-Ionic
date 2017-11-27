@@ -39,7 +39,7 @@ import {
   AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 import { AngularFireModule } from 'angularfire2';
-
+import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 export const firebaseConfig={
 
@@ -114,7 +114,8 @@ export const firebaseConfig={
     AngularFireModule,
     Push,
     SocialSharing,
-    
+    InAppBrowser,
+  
   ]
 })
 export class AppModule {}

@@ -4,7 +4,9 @@ import {ArticleDetailsPage} from '../article-details/article-details';
 import {QuotesService} from '../../services/quotes';
 
 // for Observables
-import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
+import { 
+  AfoListObservable, 
+  AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 import {
   NavParams,
@@ -20,14 +22,14 @@ import {
 })
 export class ArticlesPage {
 flag: String;
- articles: FirebaseListObservable<any>;
+ articles: AfoListObservable<any[]>;
   tabBarElement: any;
  articlesDetailsPage=ArticleDetailsPage;
  constructor(private navCtrl: NavController,
               private quotesService: QuotesService,
               private popoverCtrl: PopoverController,
               private loadingCtrl: LoadingController,
-              angFire: AngularFireDatabase,
+              angFire: AngularFireOfflineDatabase,
               private navParams: NavParams
               ) {
 

@@ -22,6 +22,7 @@ import {AngularFireDatabase } from 'angularfire2/database';
 import {PushObject, PushOptions } from '@ionic-native/push';
 import { Push} from 'ionic-native';
 import { Deeplinks} from 'ionic-native';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -38,14 +39,17 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen,
+    public _SplashScreen: SplashScreen,
     public menuCtrl: MenuController,
      public push: Push, public alertCtrl: AlertController
   ) {
     
     platform.ready().then(() => {
       statusBar.styleDefault();
-      splashScreen.hide();
+      setTimeout(()=> {
+        this._SplashScreen.hide();
+      },100);
+      
   
       // OneSignal Code start:
       // Enable to debug issues:
