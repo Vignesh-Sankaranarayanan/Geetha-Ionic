@@ -27,6 +27,7 @@ import {
   AlertController
 } from "ionic-angular";
 import { TabsPage } from '../tabs/tabs';
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 declare var window: any;
 /**
  * Generated class for the HomePage page.
@@ -67,6 +68,7 @@ mySlideOptions = {
               angFire: AngularFireOfflineDatabase,
               public zone: NgZone,
               public platform: Platform,
+              private safariViewController: SafariViewController,
               
               ) {
                  this.homeslides= angFire.list('data/home');
@@ -113,7 +115,10 @@ thirdParamName:header
   });
   }
 
-  
+  openweb()
+  {
+    window.open('http://geethamandalam.org/donation--more-information.html', '_system', 'location=yes'); return false;
+  }
     
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();

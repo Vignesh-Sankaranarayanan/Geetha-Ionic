@@ -22,7 +22,7 @@ import {AngularFireDatabase } from 'angularfire2/database';
 import {PushObject, PushOptions } from '@ionic-native/push';
 import { Push} from 'ionic-native';
 import { Deeplinks} from 'ionic-native';
-
+import { SafariViewController } from '@ionic-native/safari-view-controller';
 @Component({
   templateUrl: 'app.html'
 })

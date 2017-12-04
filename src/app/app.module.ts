@@ -37,7 +37,7 @@ import { AngularFireOfflineModule } from 'angularfire2-offline';
 import { 
   AfoListObservable, 
   AngularFireOfflineDatabase } from 'angularfire2-offline/database';
-
+  import { SafariViewController } from '@ionic-native/safari-view-controller';
 import { AngularFireModule } from 'angularfire2';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -115,7 +115,7 @@ export const firebaseConfig={
     Push,
     SocialSharing,
     InAppBrowser,
-  
+    SafariViewController,
   ]
 })
 export class AppModule {}
