@@ -21,6 +21,7 @@ import firebase from 'firebase';
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 import { InAppBrowser , InAppBrowserOptions } from '@ionic-native/in-app-browser';
 import {
+  IonicPage,
   NavController,
   NavParams,
   PopoverController,

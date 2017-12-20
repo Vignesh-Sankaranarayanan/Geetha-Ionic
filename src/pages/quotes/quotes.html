@@ -20,7 +20,9 @@
 <ion-list>
   <button ion-item *ngFor="let quotesGroup of quotes | async"
   [navPush]="quotesDetailsPage"
-  [navParams]="quotesGroup">
+  [navParams]="{
+    firstParamName:quotesGroup,
+  secondParamName:quotesGroup.catid}">
     <ion-icon [name]="quotesGroup.icon" item-left></ion-icon>
     <h2>{{quotesGroup.category}}</h2>
     <p>"Quotes:-"{{quotesGroup.quotesDetails.length}}</p>

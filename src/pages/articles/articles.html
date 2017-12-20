@@ -18,7 +18,9 @@
 <ion-list>
   <button ion-item *ngFor="let articlesGroup of articles | async"
   [navPush]="articlesDetailsPage"
-  [navParams]="articlesGroup">
+  [navParams]="{
+    firstParamName:articlesGroup,
+  secondParamName:articlesGroup.catid}">
     <h2>{{articlesGroup.article_category}}</h2>
     
   </button>

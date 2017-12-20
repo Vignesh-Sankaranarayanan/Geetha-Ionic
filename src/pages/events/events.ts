@@ -12,6 +12,7 @@ import {
   AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 import {
+  IonicPage,
   NavController,
   PopoverController,
   LoadingController,
@@ -33,7 +34,7 @@ export class EventsPage {
 
   //events: EventsModel[];
 
-
+eventsBackUp: AfoListObservable<any[]>;
  events: AfoListObservable<any[]>;
  eventsDetailsPage=EventDetailsPage;
  eventsGroup: string;
@@ -48,8 +49,11 @@ firestore = firebase.storage();
               public zone: NgZone
               ) {
 
-                this.events= angFire.list('data/events');
-               
+                this.events = angFire.list('data/events', {
+                  query: {
+                  orderByChild: "id"
+                  }
+                  });
                
   }
   ngOnInit(){

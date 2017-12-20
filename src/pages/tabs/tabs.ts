@@ -4,6 +4,7 @@ import { HomePage } from "../home/home";
 import { QuotesPage } from "../quotes/quotes";
 import { ArticlesPage } from "../articles/articles";
 import { EventsPage } from "../events/events";
+import { IonicPage } from 'ionic-angular';
 
 @Component({
   selector: 'page-tabs',

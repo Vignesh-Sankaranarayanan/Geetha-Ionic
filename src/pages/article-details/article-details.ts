@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import {ArticleDetails} from "../../data/articles.interface";
 import {ArticleTextPage} from '../article-text/article-text';
+import { 
+  AfoListObservable, 
+  AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 /**
  * Generated class for the ArticleDetailsPage page.
  *
@@ -14,15 +17,26 @@ import {ArticleTextPage} from '../article-text/article-text';
   templateUrl: 'article-details.html',
 })
 export class ArticleDetailsPage {
+  article: AfoListObservable<any[]>;
 tabBarElement : any;
+catid: number;
   articleGroup: {article_category: string, articledetails: ArticleDetails[]}[];
 articleTextPage=ArticleTextPage;
-  constructor(
+  constructor(public navCtrl: NavController,
     private navParams: NavParams) {
-       this.articleGroup = this.navParams.data;
+       this.articleGroup = this.navParams.get('firstParamName');
+       this.catid=this.navParams.get('secondParamName');
   this.tabBarElement=document.querySelector('.tabbar.show-tabbar');
     }
-
+    navigate(article,catid,id) {
+      this.navCtrl.push(ArticleTextPage, {
+        firstPassed: article,
+        articletext:article.spiritual_text_url,
+        articlename:article.article_name,
+        catidval:catid,
+        idval:id
+      })
+    }
     ionViewDidLoad() {
       console.log("Article details details");
       

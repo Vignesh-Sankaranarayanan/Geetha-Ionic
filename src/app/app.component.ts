@@ -11,8 +11,9 @@ import { QuotesPage } from "../pages/quotes/quotes";
 import { AboutPage } from "../pages/about/about";
 import { ContactUsPage } from "../pages/contactus/contactus";
 import { ArticlesPage } from "../pages/articles/articles";
+import {ArticleTextPage} from "../pages/article-text/article-text";
 import { EventsPage } from "../pages/events/events";
-import {QuoteDetailsPage} from "../pages/quote-details/quote-details"
+import {QuoteviewPage} from "../pages/quoteview/quoteview"
 import { TabsPage } from '../pages/tabs/tabs';
 import firebase from 'firebase';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,6 +23,7 @@ import {AngularFireDatabase } from 'angularfire2/database';
 import {PushObject, PushOptions } from '@ionic-native/push';
 import { Push} from 'ionic-native';
 import { Deeplinks} from 'ionic-native';
+import { enableProdMode } from '@angular/core';
 import { SafariViewController } from '@ionic-native/safari-view-controller';
 @Component({
   templateUrl: 'app.html'
@@ -30,7 +32,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = TabsPage;
+  rootPage:any = TabsPage;
   pages: Array<{title: string, component: any}>;
   page: any;
   
@@ -46,20 +48,15 @@ export class MyApp {
     
     platform.ready().then(() => {
       statusBar.styleDefault();
-      setTimeout(()=> {
+     
         this._SplashScreen.hide();
-      },100);
+        enableProdMode();
       
   
-      // OneSignal Code start:
-      // Enable to debug issues:
-       //window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
-  
-      var notificationOpenedCallback = function(jsonData) {
-        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-       
-       
-
+      var notificationOpenedCallback = jsonData => {
+        
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData)); 
+        
         
       };
 
@@ -67,8 +64,12 @@ export class MyApp {
   
       window["plugins"].OneSignal
         .startInit("400b87a2-01ac-4e95-910c-3169a8ee4c65", "321809133893")
-        .handleNotificationOpened(notificationOpenedCallback)
+        .handleNotificationOpened.subscribe((data: any) => {
+          console.log('OneSignal MyData'+ JSON.stringify(data.additionalData));
+         
+      })
         .endInit();
+       
     });
     
     firebase.initializeApp({
@@ -91,6 +92,11 @@ export class MyApp {
     ];
   }
 
+
+  
+  
+
+
   openPage(p){
     
    
@@ -111,16 +117,21 @@ export class MyApp {
         })
         */
   
-        // Convenience to route with a given nav
+        //Convenience to route with a given nav
+        
         Deeplinks.routeWithNavController(this.nav, {
           '/quotes': QuotesPage,
           '/articlespage': ArticlesPage,
-          '/eventdetails': EventsPage
+          '/eventdetails': EventsPage,
+          '/eventdetails/:eventId': EventDetailsPage,
+          '/quotedetails/:quoteMainId/:quoteId': QuoteviewPage,
+          '/articletext/:articleMainId/:articleId': ArticleTextPage
         }).subscribe((match) => {
           console.log('Successfully routed', match);
         }, (nomatch) => {
           console.warn('Unmatched Route', nomatch);
         });
+        
       })
     }
   }

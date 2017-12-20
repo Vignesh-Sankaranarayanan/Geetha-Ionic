@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.startergeetha" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.startergeetha" version="2.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Geetha Mandalam</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -19,11 +19,11 @@
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="FadeSplashScreenDuration" value="300" />
-    <preference name="FadeSplashScreen" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="30000" />
+    <preference name="SplashScreenDelay" value="15000" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -95,16 +95,17 @@
     <allow-navigation href="http://169.254.8.169:8100" />
     <allow-navigation href="http://169.254.168.167:8100" />
     <allow-navigation href="http://192.168.0.7:8100" />
-    <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.1.0" />
-    <plugin name="cordova-plugin-cocoapod-support" spec="^1.3.0" />
+    <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-console" spec="^1.1.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
+    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="cordova-plugin-cocoapod-support" spec="^1.3.0" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
     <plugin name="ionic-plugin-deeplinks" spec="^1.0.15">
         <variable name="URL_SCHEME" value="geethaionic" />
         <variable name="DEEPLINK_SCHEME" value="https" />
@@ -123,6 +124,5 @@
         <variable name="DEEPLINK_5_SCHEME" value=" " />
         <variable name="DEEPLINK_5_HOST" value=" " />
     </plugin>
-    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.2" />
 </widget>

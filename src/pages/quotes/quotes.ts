@@ -10,6 +10,7 @@ import {
   AngularFireOfflineDatabase } from 'angularfire2-offline/database';
 
 import {
+  IonicPage,
   NavParams,
   NavController,
   PopoverController,

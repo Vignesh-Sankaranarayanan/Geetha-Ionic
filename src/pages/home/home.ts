@@ -21,6 +21,7 @@ import firebase from 'firebase';
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
 import {
+  IonicPage,
   NavController,
   PopoverController,
   LoadingController,
@@ -104,7 +105,7 @@ mySlideOptions = {
  this.pages=QuotesPage;
     }
 this.navCtrlView.push(this.pages,{
-	firstParamName: home_slide,
+	fourthParamName: home_slide,
 secondParamName: desc,
 thirdParamName:header
 });

@@ -1,10 +1,10 @@
 <ion-header>
 <ion-navbar>
-    <ion-title aligh-title="center">{{ article_name | uppercase }}</ion-title>
+    <ion-title aligh-title="center">{{ articlename | uppercase }}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="about">
+<ion-content padding class="about" >
     <ion-grid>
         <ion-row>
           <ion-col>
@@ -14,7 +14,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-<div [innerHTML] = "'<p>' + article + '</p>'"></div>
+      <div [innerHTML] = "'<p>' + article + '</p>'"></div>
 <!--p>{{message}}</p-->
 
 </ion-content>

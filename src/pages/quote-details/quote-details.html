@@ -7,14 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let quote of quoteGroup.quotesDetails; let i = index">
+  <ion-card *ngFor="let quote of quoteGroup.quotesDetails; let i = index" (click)="navigate(quote,quote.id,catid)">
+    
     <ion-card-header>
       #{{ i + 1 }}
     </ion-card-header>
+   
     <ion-card-content>
       <p>{{ quote.text }}</p>
       <p class="author">{{ quote.person }}</p>
     </ion-card-content>
+ 
     <ion-grid>
       <ion-row>
         <ion-col>

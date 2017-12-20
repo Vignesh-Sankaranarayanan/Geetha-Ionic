@@ -20,7 +20,7 @@ import firebase from 'firebase';
 // for Observables
 //import {FirebaseListObservable,AngularFireDatabase } from 'angularfire2/database';
 
-import {
+import {IonicPage,
   NavController,
   NavParams,
   PopoverController,
