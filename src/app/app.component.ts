@@ -48,15 +48,20 @@ export class MyApp {
     
     platform.ready().then(() => {
       statusBar.styleDefault();
-     
+      setTimeout(()=> {
         this._SplashScreen.hide();
-        enableProdMode();
+      },100);
       
   
-      var notificationOpenedCallback = jsonData => {
-        
-        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData)); 
-        
+      // OneSignal Code start:
+      // Enable to debug issues:
+       //window["plugins"].OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+  
+      var notificationOpenedCallback = function(jsonData) {
+        console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+       
+       
+
         
       };
 
@@ -64,12 +69,8 @@ export class MyApp {
   
       window["plugins"].OneSignal
         .startInit("400b87a2-01ac-4e95-910c-3169a8ee4c65", "321809133893")
-        .handleNotificationOpened.subscribe((data: any) => {
-          console.log('OneSignal MyData'+ JSON.stringify(data.additionalData));
-         
-      })
+        .handleNotificationOpened(notificationOpenedCallback)
         .endInit();
-       
     });
     
     firebase.initializeApp({
